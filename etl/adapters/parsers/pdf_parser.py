@@ -45,7 +45,7 @@ class PdfParser(IKardexParser):
             id_num, full_name = id_match.groups()
             if not self.current_student or self.current_student['id'] != id_num:
                 if self.current_student:
-                    self.results.append(self.finalize())
+                    self.results.append(self.finalize_student())
                 self.current_student = {
                     "id": id_num,
                     "name": full_name.strip(),
@@ -124,6 +124,4 @@ class PdfParser(IKardexParser):
         self.current_student['plans'] = sorted(list(self.current_student['plan_set']))
         
         return self.current_student
-        return
-
     
